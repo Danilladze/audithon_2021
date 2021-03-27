@@ -135,10 +135,10 @@
 
             <p align="center"><h1><font class="font1" color="#ffffff">Укажите дату, регион и сумму заработной платы:</font></h1></p>
             <p></p>
-            <input type="date" id = "day" class="rounded-input form-control bg-white text-dark" name="day" value ="{{ day }}">
+            <input type="date" id = "day" class="rounded-input  bg-white text-dark" name="day" value ="{{ day }}">
             <p></p>
           <label class="form-control visually-hidden bg-info" for="inlineFormSelectPref"></label>
-                    <select class="form-control" id="region" name = "region" value ="{{ region }}">
+                    <select class="bg-white text-dark" id="region" name = "region" value ="{{ region }}">
                             <script type="text/javascript">
                   var regions = {0: 'Республика Адыгея', 1: 'Республика Башкортостан', 2: 'Республика Бурятия', 3: 'Республика Алтай',
                    4: 'Республика Дагестан', 5: 'Республика Ингушетия', 6: 'Кабардино-Балкарская Республика',
@@ -167,9 +167,9 @@
                     </select>
 
         </div>
-        <div class="form-group bg-white text-dark" style="margin-bottom: 10px">
+        <div class="form-group" style="margin-bottom: 10px">
 
-          <input class="form-control"  placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" name="salary" type="text" />
+          <input class="bg-white text-dark"  placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" type="text"/>
         </div>
         <input class="btn btn-success" type="submit" class="button" value="Я полезен!" />
       </div>
