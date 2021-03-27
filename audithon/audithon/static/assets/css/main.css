@@ -15,8 +15,10 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+
 		
 	}
+
 
 	.info {
 		display: none;
@@ -2417,6 +2419,9 @@
 
 /* Section/Article */
 
+
+
+
 	section.special, article.special {
 		text-align: center;
 	}
@@ -2608,6 +2613,7 @@
 /* Spotlight */
 
 	.spotlight {
+	background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -2930,7 +2936,7 @@
 			}
 
 			.wrapper.style1 .spotlight {
-				background-color: #0affbe;
+				background-color: #d2fcf1;
 				border-bottom-color: rgba(255, 255, 255, 0.25);
 			}
 
@@ -3207,7 +3213,8 @@
 
 		}
 		.human {
-			margin-left: 3%; /* Отступ слева */
+			float: left; /* Выравнивание по левому краю */
+            margin: 0 1em 1em 0; /* Отступ слева */
 		}
 		.town {
 			right: 10%; /* Отступ слева */
@@ -3216,10 +3223,8 @@
 /* Banner */
 
 	#banner {
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
+	    background-color: #04092a;
+
 		background-size: 100px 100px, cover;
 		color: rgba(255, 255, 255, 0.5);
 		padding: 14em 0 4em;
@@ -3430,9 +3435,10 @@
 		  .logo-img{
 			  position: fixed;
 			  margin: 0px 0px 0px 0px;
-			  left: 0;
+			  left: 10;
 			  display:inline;
 			  height: 72px;
+			  align: left;
 		  }
 
                  *{margin:0;padding:0;}
@@ -3461,3 +3467,13 @@
                 .name{float:left;margin-right:30px;}
 
                 .capital{clear:both;}
+
+                .color_z {
+
+                background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #91f4ff 0%, #1a95a3 100%);}
+
+                #form {
+                max-width: 250px;
+                padding-left: 20px;
+                padding-right: 20px;
+}

@@ -10,6 +10,8 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie.css" /><![endif]-->
 		<meta name="description" content="">
 		<meta name="keywords" content=" ">
+        <link rel="SHORTCUT ICON" href="../static/images/logo.svg" type="image/x-icon">
+        <script src='../static/assets/js/plot.js'></script>
 		<link rel="stylesheet" href="../static/assets/css/main.css">
 		<link rel="stylesheet" href="../static/assets/css/media.css">
 		<link rel="stylesheet" href="../static/assets/css/fonts.css">
@@ -26,7 +28,7 @@
 
 
     html {
-      background: #ECECEC;
+      background: #d2fcf1;
       font-family: sans-serif;
     }
 
@@ -89,45 +91,50 @@
     }
 
 
-    .capital{clear:both;}
+    .capital{clear:both;
+
+    INPUT[type="text"] {
+    background-color: navy;
+    color: #ffe;
+   }
+   }
 
 		
 		</style>
 	</head>
-	<body class="body-color back">
+	<body class = "color_z">
 		<nav class="nav">
 			<div class="container">
-			  <img class="logo-img" src="../static/images/logo.png" ALIGN=LEFT>
-			  <h2><a href="/index.html">Калькулятор налогов</a></h2>
+			  <img class="logo-img" src="../static/images/cash.png">
+
 			</div>
+
 		  </nav>
 		<!-- Banner -->
 			<section id="banner">
-				<img class="human" src="../static/images/cash.png" ALIGN=LEFT>
+
 				<div class="inner split">
-					
-					<section>
-						
-						<h2>Что купили на ваши налоги?</h2>
+
+					<section class="align-center">
+						<img src="../static/images/logo.svg" height="300">
+
 					</section>
 					<section>
-						<p><font color="#1a2b1b">Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</font></p>
-				
+						<p>Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</p>
+
 						<ul class="actions">
 							<li><a href="#one" class="button special">Поехали!</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
-			
-		<!-- ne -->
 		
 		
 		<p></p>
 		<p></p>
 		<div>
 		<section id='one'>
-		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="620px" viewBox="0 0 1090 620" xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace"> 
+		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="620px" viewBox="0 0 1090 620" xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace">
     <a href="https://www.mos.ru/">
       <path d="m 130.24729,259.26463 -0.71301,-1.3323 -0.83965,1.13893 -1.20312,0.61639 -0.3652,1.98343 -2.7566,-1.20341 -1.29507,1.2557 -1.79887,-1.96928
        -0.51738,2.08913 -1.70104,0.51357 0.48353,2.36036 1.41813,-1.06374 1.07846,1.34199 2.31013,-0.11587 0.63117,-1.4221 0.77636,1.28888 1.63087,-0.86752
@@ -370,122 +377,69 @@
     <img src="" alt="">
   </div>
 		</section>
-		
-		<section id="contact" class="wrapper">
-			<div class="inner split">
-				
-				<section>
-					
-					<h2>Посмотрите, куда могли пойти ваши налоги</h2>
-					<p>Выберите свой регион и укажите сумму заработной платы в месяц</p>
-					<form>
-						
-					<p></p>
-					<div class="form-group row">
-						<div class="6u 12u$(xsmall)"><label class="col-3 col-form-label" for="first_name"></label>
-						<div class="col-9">
-						<select class="form-select" id="autoSizingSelect">
-						  <script type="text/javascript">
-							var regions = {0: 'Республика Адыгея', 1: 'Республика Башкортостан', 2: 'Республика Бурятия', 3: 'Республика Алтай',
-						   4: 'Республика Дагестан', 5: 'Республика Ингушетия', 6: 'Кабардино-Балкарская Республика',
-						   7: 'Республика Калмыкия', 8: 'Республика Карачаево-Черкесия', 9: 'Республика Карелия', 10: 'Республика Коми',
-						   11: 'Республика Марий Эл', 12: 'Республика Мордовия', 13: 'Республика Саха (Якутия)',
-						   14: 'Республика Северная Осетия — Алания', 15: 'Республика Татарстан', 16: 'Республика Тыва',
-						   17: 'Удмуртская Республика', 18: 'Республика Хакасия', 19: 'Чувашская Республика', 20: 'Алтайский край',
-						   21: 'Краснодарский край', 22: 'Красноярский край', 23: 'Приморский край', 24: 'Ставропольский край',
-						   25: 'Хабаровский край', 26: 'Амурская область', 27: 'Архангельская область', 28: 'Астраханская область',
-						   29: 'Белгородская область', 30: 'Брянская область', 31: 'Владимирская область', 32: 'Волгоградская область',
-						   33: 'Вологодская область',
-						   34: 'Воронежская область', 35: 'Ивановская область', 36: 'Иркутская область', 37: 'Калининградская область',
-						   38: 'Калужская область', 39: 'Камчатский край', 40: 'Кемеровская область', 41: 'Кировская область',
-						   42: 'Костромская область', 43: 'Курганская область', 44:
-							   'Курская область', 45: 'Ленинградская область', 46: 'Липецкая область', 47: 'Магаданская область',
-						   48: 'Московская область', 49: 'Мурманская область', 50: 'Нижегородская область', 51: 'Новгородская область',
-						   52: 'Новосибирская область', 53: 'Омская область', 54: 'Оренбургская область', 55: 'Орловская область',
-						   56: 'Пензенская область', 57: 'Пермский край', 58: 'Псковская область', 59: 'Ростовская область',
-						   60: 'Рязанская область', 61: 'Самарская область', 62: 'Саратовская область', 63: 'Сахалинская область',
-						   64: 'Свердловская область', 65: 'Смоленская область', 66: 'Тамбовская область', 67: 'Тверская область', 68: 'Томская область', 69: 'Тульская область', 70: 'Тюменская область', 71: 'Ульяновская область', 72: 'Челябинская область', 73: 'Забайкальский край', 74: 'Ярославская область', 75: 'Москва', 76: 'Санкт-Петербург', 77: 'Еврейская автономная область', 78: 'Республика Крым', 79: 'Ненецкий автономный округ', 80: 'Ханты-Мансийский автономный округ Югра', 81: 'Чукотский автономный округ', 82: 'Ямало-Ненецкий автономный округ', 83: 'Севастополь',
-						  84: 'Байконур', 85: 'Чеченская республика'};
-						  for (region in regions) {
-							  document.write("<option>"+regions[region]+"<\/option>");
-						   }
-						  </script>
-						</select>
-						</div>
-					</div>
-					  </div>
-					
-					
-					<p></p>
-						
-					  </form>
-					<form action="#" class="alt" method="POST">
-						<div class="row uniform">
-							
-							<div class="6u$ 12u$(xsmall)">
-								<input name="salary" placeholder="Сумма заработной платы" type="text">
-							</div>
-							</div>
-							<p></p>
-							 <input class="alt" value="Я полезен!" type="submit">
-						 
-					 </form>
-				</section>
-				
-			</div>
-		</section>	
+               <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<form id="form" name="form" role="form" action="{% url 'get_Info' %}" method="post" class="center-block">
+    {% csrf_token %}
+
+  <div class="row">
+    <div class="form-group text-center">
+      <div class="control-group required">
+        <div class="controls" style="margin-bottom: 10px">
+
+          <label class="visually-hidden bg-info" for="inlineFormSelectPref"></label>
+                    <select class="form-select" id="region" name = "region" value ="{{ region }}">
+                            <script type="text/javascript">
+                  var regions = {0: 'Республика Адыгея', 1: 'Республика Башкортостан', 2: 'Республика Бурятия', 3: 'Республика Алтай',
+                   4: 'Республика Дагестан', 5: 'Республика Ингушетия', 6: 'Кабардино-Балкарская Республика',
+                   7: 'Республика Калмыкия', 8: 'Республика Карачаево-Черкесия', 9: 'Республика Карелия', 10: 'Республика Коми',
+                   11: 'Республика Марий Эл', 12: 'Республика Мордовия', 13: 'Республика Саха (Якутия)',
+                   14: 'Республика Северная Осетия — Алания', 15: 'Республика Татарстан', 16: 'Республика Тыва',
+                   17: 'Удмуртская Республика', 18: 'Республика Хакасия', 19: 'Чувашская Республика', 20: 'Алтайский край',
+                   21: 'Краснодарский край', 22: 'Красноярский край', 23: 'Приморский край', 24: 'Ставропольский край',
+                   25: 'Хабаровский край', 26: 'Амурская область', 27: 'Архангельская область', 28: 'Астраханская область',
+                   29: 'Белгородская область', 30: 'Брянская область', 31: 'Владимирская область', 32: 'Волгоградская область',
+                   33: 'Вологодская область',
+                   34: 'Воронежская область', 35: 'Ивановская область', 36: 'Иркутская область', 37: 'Калининградская область',
+                   38: 'Калужская область', 39: 'Камчатский край', 40: 'Кемеровская область', 41: 'Кировская область',
+                   42: 'Костромская область', 43: 'Курганская область', 44:
+                     'Курская область', 45: 'Ленинградская область', 46: 'Липецкая область', 47: 'Магаданская область',
+                   48: 'Московская область', 49: 'Мурманская область', 50: 'Нижегородская область', 51: 'Новгородская область',
+                   52: 'Новосибирская область', 53: 'Омская область', 54: 'Оренбургская область', 55: 'Орловская область',
+                   56: 'Пензенская область', 57: 'Пермский край', 58: 'Псковская область', 59: 'Ростовская область',
+                   60: 'Рязанская область', 61: 'Самарская область', 62: 'Саратовская область', 63: 'Сахалинская область',
+                   64: 'Свердловская область', 65: 'Смоленская область', 66: 'Тамбовская область', 67: 'Тверская область', 68: 'Томская область', 69: 'Тульская область', 70: 'Тюменская область', 71: 'Ульяновская область', 72: 'Челябинская область', 73: 'Забайкальский край', 74: 'Ярославская область', 75: 'Москва', 76: 'Санкт-Петербург', 77: 'Еврейская автономная область', 78: 'Республика Крым', 79: 'Ненецкий автономный округ', 80: 'Ханты-Мансийский автономный округ Югра', 81: 'Чукотский автономный округ', 82: 'Ямало-Ненецкий автономный округ', 83: 'Севастополь',
+                  84: 'Байконур', 85: 'Чеченская республика'};
+                  for (region in regions) {
+                    document.write("<option>"+regions[region]+"<\/option>");
+                   }
+                            </script>
+                    </select>
+        </div>
+        <div class="controls" style="margin-bottom: 10px">
+          <input class="bg-dark text-white" placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" name="salary" type="text" />
+        </div>
+        <input class="btn btn-success" type="submit" class="button" value="Я полезен!" />
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+            <div id='myDiv'></div>
+
+
 
 
 		<!-- Two -->
-			<section id="two" class="wrapper style2 alt">
-				<div class="inner">
-					<div class="spotlight">
-						<div class="image">
-							<img src="../static/images/1.jpg" alt="" />
-						</div>
-						<div class="content">
-							<h3>Вариант траты налогов</h3>
-							
-							<ul class="actions">
-								<li><a href="#" class="button alt">Details</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="spotlight">
-						<div class="image">
-							<img src="../static/images/2.jpg" alt="" />
-						</div>
-						<div class="content">
-							<h3>Вариант траты налогов</h3>
-							
-							<ul class="actions">
-								<li><a href="#" class="button alt">Details</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="spotlight">
-						<div class="image">
-							<img src="../static/images/3.jpg" alt="" />
-						</div>
-						<div class="content">
-							<h3>Вариант траты налогов</h3>
 
-							<ul class="actions">
-								<li><a href="#" class="button alt">Details</a></li>
-							</ul>
-						</div>
-					</div>
-					<ul class="actions special">
-						<li><a href="#" class="button alt">Ipsum magna tempus</a></li>
-					</ul>
-				</div>
-			</section>
 
 		<!-- Contact -->
 			<section id="contact" class="wrapper">
 				<div class="inner split">
 					<section>
-						<h2>StaffRats</h2>
+                        <h2><a></a></h2>
 					</section>
 					
 				</div>
