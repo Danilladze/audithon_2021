@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 
 <html>
@@ -5,21 +6,24 @@
 		<title>Tax Calc</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="../static/assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie.css" /><![endif]-->
+		<script src="../static/assets/js/ie/html5shiv.js"></script>
+		<link rel="stylesheet" href="../static/assets/css/graph.css" />
+		<link rel="stylesheet" href="../assets/css/ie.css" />f
 		<meta name="description" content="">
 		<meta name="keywords" content=" ">
         <link rel="SHORTCUT ICON" href="../static/images/logo.svg" type="image/x-icon">
         <script src='../static/assets/js/plot.js'></script>
 		<link rel="stylesheet" href="../static/assets/css/main.css">
         <script src="js/moment-with-locales.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Philosopher&family=Roboto:wght@100&family=Yeseva+One&display=swap" rel="stylesheet">
         <script src="js/bootstrap-datetimepicker.min.js"></script>
 		<link rel="stylesheet" href="../static/assets/css/media.css">
 		<link rel="stylesheet" href="../static/assets/css/fonts.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 		<link rel="icon" type="image/x-icon" href="/images/favicon.ico">	
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 		<script src="../static/assets/js/prefixfree.min.js"></script>
 		<style>
 			.center-img {
@@ -29,10 +33,7 @@
     /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
 
 
-    html {
-      background: #d2fcf1;
-      font-family: sans-serif;
-    }
+
 
     *{margin:0;padding:0;}
 
@@ -108,35 +109,177 @@
 		<nav class="nav">
 			<div class="container">
 			  <img class="logo-img" src="../static/images/cash.png">
-
 			</div>
+        </nav>
+<section id="banner">
+<img src="../static/images/logo.png" style="margin-left: 3%; margin-bottom: 20px; margin-top: -3%;" ALIGN=LEFT>
+        <div class="inner split">
 
-		  </nav>
-		<!-- Banner -->
-			<section id="banner">
 
-				<div class="inner split">
+					<section>
 
-					<section class="align-center">
-						<img src="../static/images/logo.svg" height="300">
+                        <h1><p align="center"><font class="font1" color="#FFFFF" >Что купили на ваши налоги?</font></p></h1>
+
+                        <font class="font1" color="#000000"><h4>Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</h4></font>
 
 					</section>
 					<section>
-						<p>Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</p>
+ <form id="form" name="form" role="form" action="{% url 'get_Info' %}" method="post" class="center-block fon" style="-moz-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%)">
+    {% csrf_token %}
 
-						<ul class="actions">
-							<li><a href="#one" class="button special">Поехали!</a></li>
-						</ul>
+  <div class="row">
+
+    <div class="form-group text-center">
+      <div class="control-group required">
+        <div class="controls" style="margin-bottom: 10px">
+
+            <p align="center"><h1><font class="font1" color="#ffffff">Укажите дату, регион и сумму заработной платы:</font></h1></p>
+            <p></p>
+            <input type="date" id = "day" class="rounded-input form-control bg-white text-dark" name="day" value ="{{ day }}">
+            <p></p>
+          <label class="form-control visually-hidden bg-info" for="inlineFormSelectPref"></label>
+                    <select class="form-control" id="region" name = "region" value ="{{ region }}">
+                            <script type="text/javascript">
+                  var regions = {0: 'Республика Адыгея', 1: 'Республика Башкортостан', 2: 'Республика Бурятия', 3: 'Республика Алтай',
+                   4: 'Республика Дагестан', 5: 'Республика Ингушетия', 6: 'Кабардино-Балкарская Республика',
+                   7: 'Республика Калмыкия', 8: 'Республика Карачаево-Черкесия', 9: 'Республика Карелия', 10: 'Республика Коми',
+                   11: 'Республика Марий Эл', 12: 'Республика Мордовия', 13: 'Республика Саха (Якутия)',
+                   14: 'Республика Северная Осетия — Алания', 15: 'Республика Татарстан', 16: 'Республика Тыва',
+                   17: 'Удмуртская Республика', 18: 'Республика Хакасия', 19: 'Чувашская Республика', 20: 'Алтайский край',
+                   21: 'Краснодарский край', 22: 'Красноярский край', 23: 'Приморский край', 24: 'Ставропольский край',
+                   25: 'Хабаровский край', 26: 'Амурская область', 27: 'Архангельская область', 28: 'Астраханская область',
+                   29: 'Белгородская область', 30: 'Брянская область', 31: 'Владимирская область', 32: 'Волгоградская область',
+                   33: 'Вологодская область',
+                   34: 'Воронежская область', 35: 'Ивановская область', 36: 'Иркутская область', 37: 'Калининградская область',
+                   38: 'Калужская область', 39: 'Камчатский край', 40: 'Кемеровская область', 41: 'Кировская область',
+                   42: 'Костромская область', 43: 'Курганская область', 44:
+                     'Курская область', 45: 'Ленинградская область', 46: 'Липецкая область', 47: 'Магаданская область',
+                   48: 'Московская область', 49: 'Мурманская область', 50: 'Нижегородская область', 51: 'Новгородская область',
+                   52: 'Новосибирская область', 53: 'Омская область', 54: 'Оренбургская область', 55: 'Орловская область',
+                   56: 'Пензенская область', 57: 'Пермский край', 58: 'Псковская область', 59: 'Ростовская область',
+                   60: 'Рязанская область', 61: 'Самарская область', 62: 'Саратовская область', 63: 'Сахалинская область',
+                   64: 'Свердловская область', 65: 'Смоленская область', 66: 'Тамбовская область', 67: 'Тверская область', 68: 'Томская область', 69: 'Тульская область', 70: 'Тюменская область', 71: 'Ульяновская область', 72: 'Челябинская область', 73: 'Забайкальский край', 74: 'Ярославская область', 75: 'Москва', 76: 'Санкт-Петербург', 77: 'Еврейская автономная область', 78: 'Республика Крым', 79: 'Ненецкий автономный округ', 80: 'Ханты-Мансийский автономный округ Югра', 81: 'Чукотский автономный округ', 82: 'Ямало-Ненецкий автономный округ', 83: 'Севастополь',
+                  84: 'Байконур', 85: 'Чеченская республика'};
+                  for (region in regions) {
+                    document.write("<option>"+regions[region]+"<\/option>");
+                   }
+                            </script>
+                    </select>
+
+        </div>
+        <div class="form-group bg-white text-dark" style="margin-bottom: 10px">
+
+          <input class="form-control"  placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" name="salary" type="text" />
+        </div>
+        <input class="btn btn-success" type="submit" class="button" value="Я полезен!" />
+      </div>
+    </div>
+  </div>
+</form>
 					</section>
 				</div>
 			</section>
-		
-		
-		<p></p>
-		<p></p>
-		<div>
-		<section id='one'>
-		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="620px" viewBox="0 0 1090 620" xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+               <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+ <div style="width: 50%; margin: 0 auto; text-align: center;">
+     <h1><font class="font1" color="#00000">Расходы бюджета</font></h1>
+     <h3><font class="font1" color="#00000">Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</font></h3>
+ </div>
+<div class="graph">
+
+		<svg class = "svg-graph" viewBox="0 0 1420 651">
+			<a href="#">
+				<path class="part" d="m 317.96235,313.27291 -191.11762,0.0919 0.13792,51.85968 191.11762,-0.3678 z" fill="#bf2523" description-data="Муниципальный: 905,88 млрд"></a>
+
+				<a href="#">
+				<path class="part" d="m 318.10027,364.85669 -0.32182,130.75264 H 127.2585 l -0.27585,-130.38484 z" fill="#bf2523" description-data="Региональный: 2 287,93 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part" d="m 317.77845,495.60933 -0.3678,115.67283 -190.70385,-1.1034 0.5517,-114.56943 H 317.77845 V 610.54656 495.60933 l 0.3678,115.30503 -191.62335,-0.9195 0.7356,-114.38553 z" fill="#bf2523" description-data="Федеральный: 2 011,44 млрд">
+				</a>
+
+
+			<a href="#">
+				<path class="part1" d="m 391.9304,315.53388 -0.065,49.60898 h 190.76373 l 0.26008,-49.3489 z" fill="#bf2523" description1-data="Муниципальный: 873,47 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part1" d="m 391.8654,365.14286 -0.13005,120.21886 191.02381,-0.52014 -0.13003,-119.69872 z" fill="#bf2523" description1-data="Региональный: 2 093,87 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part1" d="m 391.73535,485.36172 0.065,125.35531 191.02381,-0.065 -0.065,-125.81044 z" fill="#bf2523" description1-data="Федеральный: 2 205,87 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part2" d="m 657.40018,325.5467 v 50.71429 l 191.28389,-0.13004 -0.13004,-50.97436 z" fill="#bf2523" description2-data="Муниципальный: 890,17 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part2" d="m 657.40018,376.26099 0.19506,116.83791 190.76374,-0.52014 0.32509,-116.44781 z" fill="#bf2523" description2-data="Региональный: 2 047,07 млрд">
+				</a>
+
+
+			<a href="#">
+				<path class="part2" d="m 657.59524,493.0989 -0.065,117.35806 191.47894,-0.19505 -0.65018,-117.68315 z" fill="#bf2523" description2-data="Федеральный: 2 063,26 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part3" d="m 922.73993,280.35897 v 63.45788 l 191.02377,-0.13004 0.1301,-63.1978 z" fill="#bf2523" description3-data="Муниципальный: 1 124,39 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part3" d="M 922.73993,343.81685 923,493.22894 1113.7637,492.96887 V 343.68681 Z" fill="#bf2523" description3-data="Региональный: 2 608,09 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part3" d="m 923,493.22894 -0.13004,117.03297 h 191.41394 l -0.5202,-117.29304 z" fill="#bf2523" description3-data="Федеральный: 2 053,49 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part4" d="m 1188.072,243.15634 -0.1768,74.95332 191.0956,0.0442 -0.1326,-75.0859 z" fill="#bf2523" description4-data="Муниципальный: 1 326,06 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part4" d="m 1187.8952,318.10966 0.221,161.08777 191.184,-0.26517 -0.3094,-160.7784 z" fill="#bf2523" description4-data="Региональный: 2 813,35 млрд">
+				</a>
+
+			<a href="#">
+				<path class="part4" d="m 1188.1162,479.19743 -0.3094,131.34508 191.2282,-0.17678 0.2652,-131.43347 z" fill="#bf2523" description4-data="Федеральный: 2 302,22 млрд">
+				</a>
+
+			</svg>
+
+			<div class="description-graph">
+
+			</div>
+
+			<div class="description1-graph">
+
+			</div>
+
+			<div class="description2-graph">
+
+			</div>
+
+			<div class="description3-graph">
+
+			</div>
+
+			<div class="description4-graph">
+
+			</div>
+
+
+			<img src="../static/images/bar.png" alt="">
+		</div>
+
+
+            {{ table|safe }}
+<section id='one'>
+		<svg data-aos="fade-in" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="620px" viewBox="0 0 1090 620" xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace">
     <a href="https://www.mos.ru/">
       <path d="m 130.24729,259.26463 -0.71301,-1.3323 -0.83965,1.13893 -1.20312,0.61639 -0.3652,1.98343 -2.7566,-1.20341 -1.29507,1.2557 -1.79887,-1.96928
        -0.51738,2.08913 -1.70104,0.51357 0.48353,2.36036 1.41813,-1.06374 1.07846,1.34199 2.31013,-0.11587 0.63117,-1.4221 0.77636,1.28888 1.63087,-0.86752
@@ -378,73 +521,9 @@
   <div class="indicator">
     <img src="" alt="">
   </div>
-		</section>
-               <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-<form id="form" name="form" role="form" action="{% url 'get_Info' %}" method="post" class="center-block">
-    {% csrf_token %}
+</section>
 
 
-
-
-
-  <div class="row">
-
-    <div class="form-group text-center">
-      <div class="control-group required">
-        <div class="controls" style="margin-bottom: 10px">
-
-            <label><h4>Укажите дату, регион и сумму заработной платы:</h4></label>
-            <input type="date" id = "day" class="form-control bg-white text-dark" name="day" value ="{{ day }}">
-            <p></p>
-          <label class="form-control visually-hidden bg-info" for="inlineFormSelectPref"></label>
-                    <select class="form-control" id="region" name = "region" value ="{{ region }}">
-                            <script type="text/javascript">
-                  var regions = {0: 'Республика Адыгея', 1: 'Республика Башкортостан', 2: 'Республика Бурятия', 3: 'Республика Алтай',
-                   4: 'Республика Дагестан', 5: 'Республика Ингушетия', 6: 'Кабардино-Балкарская Республика',
-                   7: 'Республика Калмыкия', 8: 'Республика Карачаево-Черкесия', 9: 'Республика Карелия', 10: 'Республика Коми',
-                   11: 'Республика Марий Эл', 12: 'Республика Мордовия', 13: 'Республика Саха (Якутия)',
-                   14: 'Республика Северная Осетия — Алания', 15: 'Республика Татарстан', 16: 'Республика Тыва',
-                   17: 'Удмуртская Республика', 18: 'Республика Хакасия', 19: 'Чувашская Республика', 20: 'Алтайский край',
-                   21: 'Краснодарский край', 22: 'Красноярский край', 23: 'Приморский край', 24: 'Ставропольский край',
-                   25: 'Хабаровский край', 26: 'Амурская область', 27: 'Архангельская область', 28: 'Астраханская область',
-                   29: 'Белгородская область', 30: 'Брянская область', 31: 'Владимирская область', 32: 'Волгоградская область',
-                   33: 'Вологодская область',
-                   34: 'Воронежская область', 35: 'Ивановская область', 36: 'Иркутская область', 37: 'Калининградская область',
-                   38: 'Калужская область', 39: 'Камчатский край', 40: 'Кемеровская область', 41: 'Кировская область',
-                   42: 'Костромская область', 43: 'Курганская область', 44:
-                     'Курская область', 45: 'Ленинградская область', 46: 'Липецкая область', 47: 'Магаданская область',
-                   48: 'Московская область', 49: 'Мурманская область', 50: 'Нижегородская область', 51: 'Новгородская область',
-                   52: 'Новосибирская область', 53: 'Омская область', 54: 'Оренбургская область', 55: 'Орловская область',
-                   56: 'Пензенская область', 57: 'Пермский край', 58: 'Псковская область', 59: 'Ростовская область',
-                   60: 'Рязанская область', 61: 'Самарская область', 62: 'Саратовская область', 63: 'Сахалинская область',
-                   64: 'Свердловская область', 65: 'Смоленская область', 66: 'Тамбовская область', 67: 'Тверская область', 68: 'Томская область', 69: 'Тульская область', 70: 'Тюменская область', 71: 'Ульяновская область', 72: 'Челябинская область', 73: 'Забайкальский край', 74: 'Ярославская область', 75: 'Москва', 76: 'Санкт-Петербург', 77: 'Еврейская автономная область', 78: 'Республика Крым', 79: 'Ненецкий автономный округ', 80: 'Ханты-Мансийский автономный округ Югра', 81: 'Чукотский автономный округ', 82: 'Ямало-Ненецкий автономный округ', 83: 'Севастополь',
-                  84: 'Байконур', 85: 'Чеченская республика'};
-                  for (region in regions) {
-                    document.write("<option>"+regions[region]+"<\/option>");
-                   }
-                            </script>
-                    </select>
-
-        </div>
-        <div class="form-group bg-white text-dark" style="margin-bottom: 10px">
-
-          <input class="form-control " placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" name="salary" type="text" />
-        </div>
-        <input class="btn btn-success" type="submit" class="button" value="Я полезен!" />
-      </div>
-    </div>
-  </div>
-</form>
-
-
-
-
-            {{ table|safe }}
-
-
-
-
-		<!-- Two -->
 
 
 		<!-- Contact -->
@@ -457,8 +536,6 @@
 				</div>
 			</section>
 
-		
-
 		<!-- Scripts -->
 			<script src="../static/assets/js/jquery.min.js"></script>
 			<script src="../static/assets/js/skel.min.js"></script>
@@ -469,7 +546,15 @@
 
 			
 			<script src="../static/assets/js/map.js"></script>
-
+	        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	        <script src="/static/js/app.js"></script>
+            <script src="libs/html5shiv/es5-shim.min.js"></script>
+            <script src="libs/html5shiv/html5shiv.min.js"></script>
+            <script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+            <script src="libs/respond/respond.min.js"></script>
+        <![endif]-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="../static/assets/js/graph.js"></script>
 	</body>
 </html>
 

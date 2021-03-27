@@ -15,10 +15,8 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
-
 		
 	}
-
 
 	.info {
 		display: none;
@@ -2419,9 +2417,6 @@
 
 /* Section/Article */
 
-
-
-
 	section.special, article.special {
 		text-align: center;
 	}
@@ -2613,7 +2608,6 @@
 /* Spotlight */
 
 	.spotlight {
-	background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -2936,7 +2930,7 @@
 			}
 
 			.wrapper.style1 .spotlight {
-				background-color: #d2fcf1;
+				background-color: #0affbe;
 				border-bottom-color: rgba(255, 255, 255, 0.25);
 			}
 
@@ -3213,8 +3207,7 @@
 
 		}
 		.human {
-			float: left; /* Выравнивание по левому краю */
-            margin: 0 1em 1em 0; /* Отступ слева */
+			margin-left: 3%; /* Отступ слева */
 		}
 		.town {
 			right: 10%; /* Отступ слева */
@@ -3223,9 +3216,11 @@
 /* Banner */
 
 	#banner {
-	    background-color: #04092a;
-
-		background-size: 100px 100px, cover;
+		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
+		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
+		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
+		background-image: url("images/overlay.png"), linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%);
+		background-size: 75px 75px, cover;
 		color: rgba(255, 255, 255, 0.5);
 		padding: 14em 0 4em;
 	}
@@ -3435,45 +3430,461 @@
 		  .logo-img{
 			  position: fixed;
 			  margin: 0px 0px 0px 0px;
-			  left: 10;
+			  left: 0;
 			  display:inline;
 			  height: 72px;
-			  align: left;
 		  }
 
-                 *{margin:0;padding:0;}
+		  svg{
+			width:100%;
+		  
+		  }
+		  path{transition:all .5s; fill:rgba(0,0,0,0.6);stroke: rgba(0,0,0,0.5);}
+		  
+		  .indicator{
+			position:absolute;
+			display:inline;
+			background:rgba(0,0,0,1);
+			color:#f1f1f1;
+			padding:10px 30px;
+			font:20px Arial;
+			border-radius:5px;
+			min-width:300px;
+			
+			text-transform:capitalize;
+			display:none;
+			
+		  
+		  }
+		  
+		  .clear{clear:both}
+		  .name{float:left;margin-right:30px;}
+		  /*.flag{position:absolute;top:10px;right:20px;border:3px solid #f7ffe8;border-radius:3px;
+			}*/
+		  .capital{clear:both;}
 
-                svg{
-                  width:100%;
+		  
+		  .section-map {
+			float: left;
+			margin: 0 1.5%;
+			width: 63%;
+		  }
 
-                }
-                path{transition:all .5s; fill:rgba(0,0,0,0.6);stroke: rgba(0,0,0,0.5);}
-
-                .indicator{
-                  position:absolute;
-                  display:inline;
-                  background:rgba(0,0,0,1);
-                  color:#f1f1f1;
-                  padding:10px 30px;
-                  font:20px Arial;
-                  border-radius:5px;
-                  min-width:300px;
-
-                  text-transform:capitalize;
-                  display:none;
-                }
-
-                .clear{clear:both}
-                .name{float:left;margin-right:30px;}
-
-                .capital{clear:both;}
-
-                .color_z {
-
-                background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #91f4ff 0%, #1a95a3 100%);}
-
-                #form {
-                max-width: 250px;
-                padding-left: 20px;
-                padding-right: 20px;
+		  :root {
+	--cremeyellow: #f6f6ee;
+	--graphite: #2a2a2a;
 }
+
+.article-header {
+	position: relative;
+	margin-bottom: 69px;
+	padding: 20px 20px 30px;
+	border-radius: 10px;
+
+	@media (--mobile) {
+		padding: 10px 10px 16px;
+		margin-bottom: 38px;
+		margin-top: 6px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__meta,
+	&__title,
+	&__subtitle,
+	&__image {
+		position: relative;
+		z-index: 1;
+	}
+
+	@mixin article-meta;
+
+	&__badge {
+		a {
+			padding-bottom: 3px;
+		}
+
+		.article-header--is-tgorod &,
+		.article-header--card &,
+		.article-header--review & {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	&__badge-link {
+		.article-header--dark & {
+			color: white;
+			@mixin anchor white, color(white a(75%)), 15%, 20%;
+		}
+
+		.article-header--is-tgorod &,
+		.article-header--card &,
+		.article-header--review & {
+			font-size: 0;
+			display: inline-block;
+			width: 60px;
+			height: 12px;
+			background: url('t-gorod/gorod-logo.svg') no-repeat center;
+			background-size: contain;
+
+			@media (--small) {
+				width: 75px;
+				height: 14px;
+			}
+		}
+
+		.article-header--is-tgorod.article-header--dark &,
+		.article-header--card.article-header--dark &,
+		.article-header--review.article-header--dark & {
+			background-image: url('t-gorod/gorod-logo_white.svg');
+		}
+	}
+
+	&__title,
+	&__subtitle {
+		@mixin article-header-column;
+	}
+
+	&__title {
+		@mixin article-title;
+
+		@media (--mobile) {
+			hyphens: auto;
+			word-wrap: break-word;
+		}
+
+		@nest .article-header--hustle & {
+			font-size: 32px;
+			line-height: 40px;
+
+			@media (--small) {
+				font-size: 55px;
+				line-height: 60px;
+				margin-bottom: 13px;
+			}
+		}
+
+		@nest .article-header--card & {
+			font-size: 25px;
+
+			@media (--small) {
+				font-size: 34px;
+				line-height: 34px;
+			}
+		}
+	}
+
+	&__subtitle {
+		@mixin article-subtitle;
+		margin-bottom: 8px;
+	}
+
+	&__meta {
+		margin-bottom: 8px;
+
+		@media (--mobile) {
+			margin-bottom: 0;
+			order:1;
+		}
+
+		@nest .article-header--card & {
+			margin-top: 3px;
+
+			@media (--small) {
+				margin-top: 0;
+			}
+		}
+	}
+
+	&__image {
+		position: relative;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		height: auto;
+
+		&-box {
+			margin-top: 40px;
+
+			@media (--mobile) {
+				margin-top: 30px;
+				order: 2;
+			}
+		}
+
+		&--left-align {
+			margin-left: 0;
+			border-radius: 10px;
+		}
+
+		&--center-align {
+			margin-top: 79px;
+
+			@media (--mobile) {
+				margin-top: 13px;
+			}
+		}
+	}
+
+	&__showcase {
+		margin-top: 20px;
+	}
+
+	&__wallpaper {
+		position: absolute;
+		z-index: 0;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: bottom center;
+		border-radius: 10px;
+
+		&--tiled {
+			background-repeat: repeat;
+			background-size: auto;
+		}
+
+		&--shaded:after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			bottom: 0;
+			left: 0;
+			background-color: rgba(0,0,0,.15);
+			border-radius: 10px;
+
+			@nest .article-header--card & {
+				background-color: rgba(0,0,0,.25);
+			}
+		}
+
+		&--masked {
+			mask-image: linear-gradient(to bottom, black 50%, rgba(0,0,0,.25) 100%);
+		}
+	}
+
+	&--dark {
+		color: white;
+
+		a {
+			@mixin anchor white, color(white a(75%)), 15%, 20%;
+		}
+	}
+
+	&--bordered {
+		box-shadow: inset 0 0 0 1px black;
+	}
+
+	&--creme {
+		background: var(--cremeyellow);
+		padding-left: 13px !important;
+		border-radius: 10px 10px 0 0 !important;
+
+		@media (--mobile) {
+			padding-left: 9px !important;
+		}
+	}
+
+	&--graphite {
+		background: var(--graphite);
+		padding-left: 13px !important;
+		border-radius: 10px 10px 0 0 !important;
+
+		@media (--mobile) {
+			padding-left: 9px !important;
+		}
+	}
+
+	&--pure {
+		padding-left: 0;
+		padding-right: 0;
+		border-radius: 0;
+
+		@media (--mobile) {
+			margin-top: 6px;
+			padding-top: 0;
+		}
+	}
+
+	&--secret {
+		background-color: #191919;
+	}
+
+	&--with-wallpaper {
+		margin-bottom: 35px;
+
+		@media (--mobile) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&:not(&--imageless) {
+		margin-bottom: 50px;
+
+		@media (--mobile) {
+			margin-bottom: 50px;
+		}
+
+		&.article-header--pure {
+			margin-bottom: 10px;
+
+			@media (--mobile) {
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	&--with-wallpaper&--imageless {
+		height: 600px;
+
+		@media (--mobile) {
+			height: 450px;
+		}
+
+		&.article-header--card {
+			height: 310px;
+
+			@media (--small) {
+				height: 400px;
+			}
+		}
+	}
+
+	&--news,
+	&--story {
+		margin-bottom: 37px;
+
+		@media (--mobile) {
+			margin-bottom: 4px;
+		}
+	}
+
+	&--news {
+		@media (--mobile) {
+			margin-bottom: 12px;
+		}
+	}
+
+
+	&--faqcard,
+	&--enquery {
+		margin-bottom: 0;
+
+		& + .article-body .highlight:first-of-type {
+			@mixin article-outsider;
+			@mixin article-outsider-textual;
+			margin-top: 0;
+			margin-right: 0;
+			margin-left: 0;
+			padding-top: 0;
+			padding-left: 13px;
+
+			@media (--1column) {
+				padding-right: 13px;
+			}
+
+			@media (--mobile) {
+				padding-left: 9px;
+			}
+		}
+
+		/* В Chrome на Android девайсах возникает баг рендеринга: между двумя блочными темными элементами на светлом фоне
+		появляется светлая полоса. Сейчас сделано так, что один элемент лежит внутри article-header, а второй внутри article-body.
+		По-хорошему, нужно чтобы оба блока лежали в article-header, но для этого нет поля в админке.
+		В качестве быстрого решения делаем хак - ставим отрицательный маргин снизу у верхнего элемента */
+		&.article-header--graphite {
+			margin-bottom: -1px;
+		}
+	}
+
+	&--faqcard {
+		& + .article-body .highlight:first-of-type {
+			background: var(--cremeyellow);
+			border-radius: 0 0 10px 10px;
+		}
+	}
+
+	&--enquery {
+		& + .article-body .highlight:first-of-type {
+			background: var(--graphite);
+			color: white;
+			border-radius: 0 0 10px 10px;
+
+			a {
+				@mixin anchor white, color(white a(75%)), 15%, 20%;
+			}
+		}
+	}
+
+	&--story {
+		& + .article-body .big-quote:first-of-type {
+			text-align: left;
+		}
+	}
+
+	&--numeral {
+		.article-header__title {
+			font-size: 170px;
+			line-height: 180px;
+
+			@media (--w800) {
+				font-size: 55px;
+				line-height: 52px;
+			}
+		}
+
+		.article-header__subtitle {
+			margin-bottom: 0;
+
+			@media (--w800) {
+				font-size: 20px;
+				line-height: 24px;
+			}
+		}
+	}
+
+	&--hustle {
+		margin-bottom: 25px;
+		padding-bottom: 0;
+
+		@media (--small) {
+			margin-bottom: 55px;
+		}
+
+		.article-header__meta {
+			margin: 2px 0;
+		}
+	}
+
+	&--card {
+		margin-top: 15px;
+		margin-bottom: 25px;
+		padding: 10px 10px 20px;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		overflow: hidden;
+
+		@media (--small) {
+			margin-top: 30px;
+			margin-bottom: 40px;
+			padding: 10px 20px 30px;
+		}
+	}
+
+	&--ugcpost {
+		margin-bottom: 0;
+	}
+
+
+}
+.font1{
+     font-family: 'Roboto', sans-serif;
+    }
