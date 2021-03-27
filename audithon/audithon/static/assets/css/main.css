@@ -1865,8 +1865,7 @@
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		border-radius: 0;
-		border: none;
+		border-radius: 2em;
 		border: solid 1px;
 		color: inherit;
 		display: block;
