@@ -13,6 +13,8 @@
         <link rel="SHORTCUT ICON" href="../static/images/logo.svg" type="image/x-icon">
         <script src='../static/assets/js/plot.js'></script>
 		<link rel="stylesheet" href="../static/assets/css/main.css">
+        <script src="js/moment-with-locales.min.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
 		<link rel="stylesheet" href="../static/assets/css/media.css">
 		<link rel="stylesheet" href="../static/assets/css/fonts.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -381,13 +383,21 @@
 <form id="form" name="form" role="form" action="{% url 'get_Info' %}" method="post" class="center-block">
     {% csrf_token %}
 
+
+
+
+
   <div class="row">
+
     <div class="form-group text-center">
       <div class="control-group required">
         <div class="controls" style="margin-bottom: 10px">
 
-          <label class="visually-hidden bg-info" for="inlineFormSelectPref"></label>
-                    <select class="form-select" id="region" name = "region" value ="{{ region }}">
+            <label><h4>Укажите дату, регион и сумму заработной платы:</h4></label>
+            <input type="date" id = "day" class="form-control bg-white text-dark" name="day" value ="{{ day }}">
+            <p></p>
+          <label class="form-control visually-hidden bg-info" for="inlineFormSelectPref"></label>
+                    <select class="form-control" id="region" name = "region" value ="{{ region }}">
                             <script type="text/javascript">
                   var regions = {0: 'Республика Адыгея', 1: 'Республика Башкортостан', 2: 'Республика Бурятия', 3: 'Республика Алтай',
                    4: 'Республика Дагестан', 5: 'Республика Ингушетия', 6: 'Кабардино-Балкарская Республика',
@@ -414,9 +424,11 @@
                    }
                             </script>
                     </select>
+
         </div>
-        <div class="controls" style="margin-bottom: 10px">
-          <input class="bg-dark text-white" placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" name="salary" type="text" />
+        <div class="form-group bg-white text-dark" style="margin-bottom: 10px">
+
+          <input class="form-control " placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" name="salary" type="text" />
         </div>
         <input class="btn btn-success" type="submit" class="button" value="Я полезен!" />
       </div>
@@ -427,7 +439,7 @@
 
 
 
-            <div id='myDiv'></div>
+            {{ table|safe }}
 
 
 
