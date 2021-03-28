@@ -1,4 +1,4 @@
-
+/*
 
 $('path').hover(function(e){
 
@@ -196,3 +196,4 @@ $('.reg').hover(function(e) {
 });
 
 //} // revertFill
+*/

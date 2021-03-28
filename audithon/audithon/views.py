@@ -1,13 +1,15 @@
 import requests
 import datetime
 import re
+import plotly.offline as opy
+import plotly.graph_objs as go
 import os
 import plotly.express as px
 import pandas as pd
 from django.shortcuts import render
 from plotly.offline import plot
-from plotly.graph_objs import Scatter
-
+from plotly.graph_objs import Scatter, Layout, Figure
+import plotly.express as px
 
 #magic for date
 
@@ -51,23 +53,26 @@ def graph(request):
 
 def get_Info(request):
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST['salary'] != '':
         region = request.POST['region']
         salary = request.POST['salary']
+        period = 0
 
-        date = request.POST['day']
+        date = '2016-15-07'
+        tax = int(salary) * 0.13
+        if period == 1:
+            tax *= 3
+        if period == 2:
+            tax *= 12
+
 
         # magic for date
         now = datetime.datetime.now()
-        date_first = date[5:7] + '.' + date[8:] + '.' + date[:4]
         date_second = now.strftime("%d.%m.%Y")
+        date_first = date_second[:8] + str(int(date_second[7:]) - 10)
+
         date_for_url = date_first + '-' + date_second
         print(date_for_url)
-
-        print(date)
-        tax = int(salary) // 13
-
-
 
         # converting a region to a code
         region_base = pd.read_csv(os.getcwd()+'/audithon/static/assets/csv/codes.csv', index_col='region')
@@ -77,43 +82,64 @@ def get_Info(request):
             kod_for_url = '0' + kod_for_url
 
         # creating url_api by region and price
-        url_contracts = 'https://api.spending.gov.ru/v1/contracts/search/?customerregion='
-        url_nprojects = 'https://api.spending.gov.ru/v1/natprojects/nprojects/'
-        url_private = 'https://lk.zakupki.gov.ru/223/contract/private/download/download.html?id=75825934'
+        url = 'https://api.spending.gov.ru/v1/contracts/search/?customerregion='
         reg_for_url = kod_for_url
-        price_url = '&pricerange=1000-'
         date_url = '&daterange='
-        api = url_contracts + str(reg_for_url) + price_url + str(tax) + date_url + date_for_url
+        api = url + str(reg_for_url) + date_url + date_for_url
+        print(api)
 
         # text from api
         contracts_get_api = requests.get(api)
         contracts_text = contracts_get_api.json()
+
         test = contracts_text['contracts']['data']
         df = pd.DataFrame(test)
-        #print(contracts_text)
 
+        if 'economic_sectors' in df.columns:
+            df = df.dropna(axis='index', how='any', subset=['economic_sectors'])
+            df = df.reset_index(drop=True)
 
-        contract_info = pd.DataFrame()
+        # create dataframe2
+        paid = tax / df.loc[:, 'price'] * 100
+
+        if 'economic_sectors' in df.columns:
+            economic_sectors = []
+            for i in range(len(df)):
+                economic_sectors.append(df.loc[i, 'economic_sectors'][0]['title'])
+
+        customer = []
+        for i in range(len(df)):
+            customer.append(df.loc[i, 'customer']['fullName'])
 
         name = []
         for i in range(len(df)):
             name.append(df.loc[i, 'products'][0]['name'])
 
+        contract_info = pd.DataFrame()
+
         if 'contractUrl' in df.columns:
-            #products =
             contract_info = df[['contractUrl', 'price']]
         else:
             contract_info = df[['price']]
 
         contract_info['name_of_products'] = name
+        if 'economic_sectors' in df.columns:
+            contract_info['economic_sectors'] = economic_sectors
+        contract_info['customer'] = customer
+        contract_info['paid'] = paid
 
+        contract_info = contract_info[contract_info['paid'] < 100].sort_values(by=['price'],
+                                                                               ascending=False).reset_index(drop=True)
 
         user_info = {'region': region, 'tax': tax}
         print(user_info)
 
+        table0 = {'table': [contract_info.to_html(classes='data')], 'titles': contract_info.columns.values}
+        table = {'table': contract_info.to_html()}
+        context = {'graph': graph}
 
-    return render(request, 'index.html', {'table': contract_info.to_html()})
-
-
+    elif request.POST['salary'] == '':
+        table = {}
+    return render(request, 'index.html', table)
 
 

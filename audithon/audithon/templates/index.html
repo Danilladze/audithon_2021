@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 
 <html>
@@ -8,7 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script src="../static/assets/js/ie/html5shiv.js"></script>
 		<link rel="stylesheet" href="../static/assets/css/graph.css" />
-		<link rel="stylesheet" href="../assets/css/ie.css" />f
+		<link rel="stylesheet" href="../assets/css/ie.css" />
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 		<meta name="description" content="">
 		<meta name="keywords" content=" ">
         <link rel="SHORTCUT ICON" href="../static/images/logo.svg" type="image/x-icon">
@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="../static/assets/css/main.css">
         <script src="js/moment-with-locales.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Philosopher&family=Roboto:wght@100&family=Yeseva+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Prata&display=swap" rel="stylesheet">
         <script src="js/bootstrap-datetimepicker.min.js"></script>
 		<link rel="stylesheet" href="../static/assets/css/media.css">
 		<link rel="stylesheet" href="../static/assets/css/fonts.css">
@@ -108,37 +108,31 @@
 	<body class = "color_z">
 		<nav class="nav">
 			<div class="container">
-			  <img class="logo-img" src="../static/images/cash.png">
+			  <!--<img src="../static/images/cash.png">-->
 			</div>
         </nav>
 <section id="banner">
-<img src="../static/images/logo.png" style="margin-left: 3%; margin-bottom: 20px; margin-top: -3%;" ALIGN=LEFT>
+<img src="../static/images/logo.png" style="margin-left: 5%; margin-bottom: 20px; margin-top: -3%; transform:translate(0px,70px);" ALIGN=LEFT>
         <div class="inner split">
-
-
 					<section>
-
-                        <h1><p align="center"><font class="font1" color="#FFFFF" >Что купили на ваши налоги?</font></p></h1>
-
-                        <font class="font1" color="#000000"><h4>Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</h4></font>
-
-					</section>
-					<section>
- <form id="form" name="form" role="form" action="{% url 'get_Info' %}" method="post" class="center-block fon" style="-moz-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%)">
+<form id="form" name="form" role="form" action="{% url 'get_Info' %}" text-align="center" method="post" class="center-block fon" style="-moz-linear-gradient(45deg, #5fe96b 0%, #e8fd28 100%); margin: 0 auto">
     {% csrf_token %}
 
   <div class="row">
 
     <div class="form-group text-center">
+        <p align="center"><h1 style="transform: scale(1.4) translate(0px,-50px);"><font class="font1" color="#ffffff">Посмотрите, какую часть услуги вы бы могли оплатить.</font></h1></p>
+        <p align="center"><h4><font class="font2" color="#ffffff">Заполните поля снизу, чтобы увидеть свой вклад в развитие.</font></h4></p>
       <div class="control-group required">
+
         <div class="controls" style="margin-bottom: 10px">
 
-            <p align="center"><h1><font class="font1" color="#ffffff">Укажите дату, регион и сумму заработной платы:</font></h1></p>
+
             <p></p>
-            <input type="date" id = "day" class="rounded-input form-control bg-white text-dark" name="day" value ="{{ day }}">
+
             <p></p>
           <label class="form-control visually-hidden bg-info" for="inlineFormSelectPref"></label>
-                    <select class="form-control" id="region" name = "region" value ="{{ region }}">
+                    <select class="bg-white text-dark" id="region" name = "region" value ="{{ region }}">
                             <script type="text/javascript">
                   var regions = {0: 'Республика Адыгея', 1: 'Республика Башкортостан', 2: 'Республика Бурятия', 3: 'Республика Алтай',
                    4: 'Республика Дагестан', 5: 'Республика Ингушетия', 6: 'Кабардино-Балкарская Республика',
@@ -167,27 +161,33 @@
                     </select>
 
         </div>
-        <div class="form-group bg-white text-dark" style="margin-bottom: 10px">
+        <div class="form-group" style="margin-bottom: 10px">
 
-          <input class="form-control"  placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" name="salary" type="text" />
+          <input class="bg-white text-dark" placeholder="Зарплата" name="salary" value = "{{ salary }}" id="salary" maxlength="30" type="text"/>
         </div>
-        <input class="btn btn-success" type="submit" class="button" value="Я полезен!" />
+          <a href="#main-table"><input class="btn btn-success" type="submit" class="button" value="Просмотреть" /></a>
       </div>
     </div>
   </div>
 </form>
+
 					</section>
+
 				</div>
 			</section>
 
-               <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+        {% block content %}
+        {% endblock %}
 
  <div style="width: 50%; margin: 0 auto; text-align: center;">
-     <h1><font class="font1" color="#00000">Расходы бюджета</font></h1>
-     <h3><font class="font1" color="#00000">Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</font></h3>
+     <h1><font class="font2" color="#00000">Расходы бюджета</font></h1>
+     <h3><font class="font2" color="#00000">Отдавая часть своих денег в виде налогов, мы по сути выступаем соучастниками создания благоприятной для жизни среды. Из налоговых поступлений государство финансирует значительную часть расходов: на оборону, на здравоохранение, образование, на содержание органов управления, суда, на социальную и культурную сферу.</font></h3>
  </div>
-<div class="graph">
 
+
+
+<div class="graph">
 		<svg class = "svg-graph" viewBox="0 0 1420 651">
 			<a href="#">
 				<path class="part" d="m 317.96235,313.27291 -191.11762,0.0919 0.13792,51.85968 191.11762,-0.3678 z" fill="#bf2523" description-data="Муниципальный: 905,88 млрд"></a>
@@ -276,8 +276,8 @@
 			<img src="../static/images/bar.png" alt="">
 		</div>
 
-
-            {{ table|safe }}
+        <a name="main-table">
+            {{ table|safe}}</a>
 <section id='one'>
 		<svg data-aos="fade-in" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="620px" viewBox="0 0 1090 620" xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace">
     <a href="https://www.mos.ru/">
@@ -557,4 +557,3 @@
             <script src="../static/assets/js/graph.js"></script>
 	</body>
 </html>
-
